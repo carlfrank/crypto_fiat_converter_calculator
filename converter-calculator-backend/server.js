@@ -3,13 +3,16 @@ require('dotenv').config(); // First line to ensure dotenv loads variables early
 const express = require('express');
 const axios = require('axios');
 const NodeCache = require('node-cache');
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3001;
 
 // Setting up the cache, with a standard TTL of 10 minutes (600 seconds)
 const cache = new NodeCache({ stdTTL: 600 });
 
+app.use(cors());
 app.use(express.json());
+app.use('/api', routes);
 
 // Endpoint to fetch available cryptocurrencies
 app.get('/api/currencies', async (req, res) => {
