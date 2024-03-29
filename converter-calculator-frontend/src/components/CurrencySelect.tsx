@@ -4,7 +4,7 @@ import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 interface CurrencySelectProps {
   selectedValue: string;
-  onValueChange: (event: React.ChangeEvent<{ value: unknown }>) => void;
+  onValueChange: (event: React.ChangeEvent<{ name?: string | undefined; value: unknown; }>) => void; // Updated for clarity
   label: string;
   options: Array<{ value: string; label: string }>;
 }
@@ -17,11 +17,17 @@ const CurrencySelect: React.FC<CurrencySelectProps> = ({ selectedValue, onValueC
       label={label}
       onChange={onValueChange}
     >
-      {options.map((option) => (
-        <MenuItem key={option.value} value={option.value}>
-          {option.label}
+      {options.length > 0 ? (
+        options.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))
+      ) : (
+        <MenuItem disabled value="">
+          No options available
         </MenuItem>
-      ))}
+      )}
     </Select>
   </FormControl>
 );
