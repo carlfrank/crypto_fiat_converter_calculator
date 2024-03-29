@@ -24,10 +24,12 @@ Follow these steps to get your development environment set up:
    git clone https://github.com/carlfrank/crypto_fiat_converter_calculator.git
 
 1. Navigate to the project directory:
-cd crypto_fiat_converter_calculator
+   ```bash
+   cd crypto_fiat_converter_calculator
 
 2. Install dependencies with Yarn:
-yarn
+   ```bash
+   yarn
 
 Usage
 To run the application in development mode, use the following command:
