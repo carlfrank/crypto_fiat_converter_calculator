@@ -23,39 +23,39 @@ Follow these steps to get your development environment set up:
    ```bash
    git clone https://github.com/carlfrank/crypto_fiat_converter_calculator.git
 
-1. Navigate to the project directory:
+2. Navigate to the project directory:
    ```bash
    cd crypto_fiat_converter_calculator
 
-2. Install dependencies with Yarn:
+3. Install dependencies with Yarn:
    ```bash
    yarn
 
-Usage
+## Usage
 To run the application in development mode, use the following command:
 yarn start
 
 This will start the application and automatically open it in your default web browser. If it doesn't open automatically, you can manually visit http://localhost:3000 in your browser. The app will reload if you make edits.
 
-Building for Production
+## Building for Production
 When you're ready to build a production version of your app, run:
 yarn build
 
 This compiles the application to the build folder, optimizing the build for performance. The build is minified, and filenames include hashes for cache management.
 
-Contributing
+## Contributing
 We welcome contributions to the Crypto-Fiat Converter Calculator. If you have suggestions or improvements, follow these steps to contribute:
 
-Fork the repository.
-Create a new branch (git checkout -b feature/AmazingFeature).
-Make your changes and commit them (git commit -m 'Add some AmazingFeature').
-Push the branch (git push origin feature/AmazingFeature).
-Open a pull request.
-License
+1. Fork the repository.
+2. Create a new branch (git checkout -b feature/AmazingFeature).
+3. Make your changes and commit them (git commit -m 'Add some AmazingFeature').
+4. Push the branch (git push origin feature/AmazingFeature).
+5. Open a pull request.
+
+## License
 This project is licensed under the MIT License. See the LICENSE.md file for more details.
 
-Support
-For support, query resolution, and discussions, please open an issue in the project's GitHub issue tracker.
-
-
+## Support
+1. For support, query resolution, and discussions, please open an issue in the project's GitHub issue tracker:
+   ```bash
 This version uses Yarn commands (`yarn` instead of `npm install` and `yarn start` instead of `npm start`, etc.) to align with your project's use of Yarn for package management. Adjust any specific details as needed to accurately represent your project and its setup.
