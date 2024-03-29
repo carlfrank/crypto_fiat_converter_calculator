@@ -5,7 +5,7 @@ const axios = require('axios');
 const NodeCache = require('node-cache');
 const cors = require('cors');
 const app = express();
-const routes = require('./routes'); // Import routes from your routes file
+const routes = require('../routes/currencyRoutes'); // Import routes from your routes file
 const port = process.env.PORT || 3001;
 
 // Setting up the cache, with a standard TTL of 10 minutes (600 seconds)
