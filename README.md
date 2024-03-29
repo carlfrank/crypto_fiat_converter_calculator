@@ -56,6 +56,6 @@ We welcome contributions to the Crypto-Fiat Converter Calculator. If you have su
 This project is licensed under the MIT License. See the LICENSE.md file for more details.
 
 ## Support
-1. For support, query resolution, and discussions, please open an issue in the project's GitHub issue tracker:
-   ```bash
+For support, query resolution, and discussions, please open an issue in the project's GitHub issue tracker:
+
 This version uses Yarn commands (`yarn` instead of `npm install` and `yarn start` instead of `npm start`, etc.) to align with your project's use of Yarn for package management. Adjust any specific details as needed to accurately represent your project and its setup.
