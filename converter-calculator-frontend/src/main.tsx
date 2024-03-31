@@ -5,6 +5,7 @@ import './index.css'; // Import global styles first
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
