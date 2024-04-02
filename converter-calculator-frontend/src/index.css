@@ -6,4 +6,20 @@ body {
   background-color: #eaeaea;
 }
 
-/* Utility classes for margin and padding can be added here */
+/* Utility classes for margin and padding */
+.mt-1 { margin-top: 1rem; }
+.mb-1 { margin-bottom: 1rem; }
+.ml-1 { margin-left: 1rem; }
+.mr-1 { margin-right: 1rem; }
+
+.pt-1 { padding-top: 1rem; }
+.pb-1 { padding-bottom: 1rem; }
+.pl-1 { padding-left: 1rem; }
+.pr-1 { padding-right: 1rem; }
+
+/* You can create more utilities for different sizes, e.g., 0.5rem, 2rem, etc. */
+.mt-2 { margin-top: 2rem; }
+.mb-2 { margin-bottom: 2rem; }
+/* ... and so on for all margin and padding sizes you need ... */
+
+/* Add more utility classes as you need them for your application */

@@ -5,7 +5,6 @@ const axios = require('axios');
 const NodeCache = require('node-cache');
 const cors = require('cors');
 const app = express();
-const routes = require('./routes/currencyRoutes'); // Corrected import path for currencyRoutes
 const port = 3002;
 
 // Setting up the cache, with a standard TTL of 10 minutes (600 seconds)
@@ -13,22 +12,29 @@ const cache = new NodeCache({ stdTTL: 600 });
 
 app.use(cors());
 app.use(express.json());
-app.use('/api', routes);
 
 // Endpoint to fetch available cryptocurrencies
 app.get('/api/currencies', async (req, res) => {
     const cacheKey = 'currencies';
-    const cached = cache.get(cacheKey);
+    let cached = cache.get(cacheKey);
 
     if (cached) {
-        return res.json({ success: true, data: cached });
+        // Send cached data if available
+        return res.json(cached);
     }
 
     try {
         const response = await axios.get('https://api.coingecko.com/api/v3/coins/list');
-        const currencies = response.data;
-        cache.set(cacheKey, currencies);
-        res.json({ success: true, data: currencies });
+        // Transform the response to match the expected format
+        const transformedCurrencies = response.data.map(coin => ({
+            id: coin.id,
+            name: coin.symbol.toUpperCase() // Assuming you want the symbol as name, change to coin.name if you want the full name
+        }));
+
+        // Cache the transformed response
+        cache.set(cacheKey, transformedCurrencies);
+
+        res.json(transformedCurrencies);
     } catch (error) {
         console.error('Failed to fetch currencies:', error);
         res.status(500).json({ success: false, message: 'Failed to fetch currencies' });

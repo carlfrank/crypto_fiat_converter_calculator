@@ -8,13 +8,12 @@ const convertCurrencies = async (req, res) => {
   const { from, to } = req.query;
   const cacheKey = `convert_${from}_${to}`;
 
-  // Check the cache first to see if we already have the conversion rate
-  const cached = cache.get(cacheKey);
-  if (cached) {
-    return res.json({ success: true, data: cached });
-  }
+  // ...
+const result = { conversion: rate, from, to }; // use 'conversion' instead of 'rate'
+cache.set(cacheKey, result);
+res.json({ success: true, data: result });
+// ...
 
-  // If not in cache, fetch new data
   try {
     const url = `https://api.coingecko.com/api/v3/simple/price?ids=${from}&vs_currencies=${to}`;
     const response = await axios.get(url);

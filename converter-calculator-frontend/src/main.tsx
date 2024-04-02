@@ -1,16 +1,17 @@
-// main.tsx
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client'; // import createRoot
 import './index.css'; // Import global styles first
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Use the createRoot API to mount your app component
+const container = document.getElementById('root');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
 
-ReactDOM.render(
+root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

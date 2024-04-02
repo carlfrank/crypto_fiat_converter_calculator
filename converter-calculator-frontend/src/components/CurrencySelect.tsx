@@ -1,23 +1,51 @@
-// src/components/CurrencySelect.tsx
+// CurrencySelect.tsx
 import React from 'react';
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { FormControl, InputLabel, Select, MenuItem, CircularProgress, FormHelperText, SelectChangeEvent } from '@mui/material';
+
+interface Option {
+  value: string;
+  label: string;
+}
 
 interface CurrencySelectProps {
   selectedValue: string;
-  onValueChange: (event: React.ChangeEvent<{ name?: string | undefined; value: unknown; }>) => void; // Updated for clarity
+  onValueChange: (event: SelectChangeEvent<string>) => void; // Ensuring correct typing for the event
   label: string;
-  options: Array<{ value: string; label: string }>;
+  options: Option[];
+  isLoading?: boolean;
+  error?: string;
 }
 
-const CurrencySelect: React.FC<CurrencySelectProps> = ({ selectedValue, onValueChange, label, options }) => (
-  <FormControl fullWidth margin="normal">
+const CurrencySelect: React.FC<CurrencySelectProps> = ({
+  selectedValue,
+  onValueChange,
+  label,
+  options,
+  isLoading = false,
+  error = '',
+}) => (
+  <FormControl fullWidth margin="normal" error={!!error}>
     <InputLabel>{label}</InputLabel>
     <Select
       value={selectedValue}
       label={label}
-      onChange={onValueChange}
+      onChange={onValueChange} // Correctly typed event handler
+      disabled={isLoading || !!error}
+      inputProps={{
+        'aria-label': label,
+        'aria-busy': isLoading ? 'true' : 'false',
+      }}
     >
-      {options.length > 0 ? (
+      {isLoading ? (
+        <MenuItem value="">
+          <CircularProgress size={24} />
+          <span style={{ marginLeft: '10px' }}>Loading...</span>
+        </MenuItem>
+      ) : error ? (
+        <MenuItem disabled value="">
+          Error: {error}
+        </MenuItem>
+      ) : options.length > 0 ? (
         options.map((option) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
@@ -29,6 +57,7 @@ const CurrencySelect: React.FC<CurrencySelectProps> = ({ selectedValue, onValueC
         </MenuItem>
       )}
     </Select>
+    {error && <FormHelperText>{error}</FormHelperText>}
   </FormControl>
 );
 
